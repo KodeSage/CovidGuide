@@ -65,6 +65,7 @@ export async function registerUser(data, navigate) {
 			lastname: lastname,
 			email: email,
 			userCountry: userCountry,
+			password: password,
 		};
 		await setDoc(doc(db, "users", user.uid), userData);
 		toast.success("User Created Successfully");
@@ -128,7 +129,9 @@ export async function loginUser(data, navigate, dispatch) {
 	}
 }
 
-export async function autoLoginUser(uid, dispatch) {
+export async function autoLoginUser ( uid, dispatch )
+{
+	console.log("Auto Login User", uid);
 	// const dispatch = useDispatch();
 	try {
 		const user = await getUserFromDb(uid);

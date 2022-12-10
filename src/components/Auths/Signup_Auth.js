@@ -6,8 +6,7 @@ import { AuthStylesContainer } from "./Auth.styles";
 import CountryJson from "../../utilis/CountryJson";
 import { registerUser } from "../../services/authServices";
 import { Link, useNavigate } from "react-router-dom";
-const Signup_Auth = () =>
-{
+const Signup_Auth = () => {
 	const navigate = useNavigate();
 	const [showPassword, setShowPassword] = useState(false);
 	const togglePassword = useCallback(() => {

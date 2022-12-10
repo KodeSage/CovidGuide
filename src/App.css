@@ -10,6 +10,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+.contents_height{
+ 
+  margin-top: 100px;
+}
 body{
     font-family: 'Noto Sans', sans-serif;
     scroll-behavior: smooth;
