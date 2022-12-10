@@ -1,0 +1,208 @@
+/** @format */
+
+.sidebar {
+	width: 345px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background: #1141d2;
+	transition: all 0.3s ease;
+}
+.toogle {
+	width: 70px;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	background: #1141d2;
+	transition: all 0.3s ease-out;
+}
+.toogle .sidebar__logo h1,
+.toogle .sidebar__menu li p,
+.toogle .sidebar__logout h4 {
+	transition: all 0.3s ease-out;
+	display: none;
+}
+.toogle .sidebar__menu li {
+	padding-left: 1rem;
+}
+.toogle .sidebar__menu li p {
+	padding-left: 0rem;
+}
+
+.sidebar__logo {
+	height: 90px;
+	padding: 1rem 2rem 2rem 0.7rem;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+.sidebar__logo h1 {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+.sidebar__logo svg {
+	font-size: 2rem;
+}
+.sidebar__menu li {
+	width: 100%;
+	margin-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding-left: 1rem;
+	font-size: 1rem;
+	font-weight: 500;
+	color: #fff;
+}
+.active {
+	background: #fff;
+	/* border-radius: 10px; */
+	border-radius: 30px 0 0 30px;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.active p {
+	color: #1141d2;
+}
+.active svg {
+	fill: #1141d2;
+}
+
+.sidebar__menu li p {
+	padding-left: 1rem;
+}
+.sidebar__menu svg {
+	font-size: 1.3rem;
+	font-weight: 500;
+	color: #fff;
+}
+.sidebar__logout {
+	width: 100%;
+	margin: 4rem 0;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding-left: 1rem;
+	font-size: 1rem;
+	font-weight: 500;
+	color: #fff;
+	cursor: pointer;
+}
+.sidebar__logout svg {
+	font-size: 1.3rem;
+}
+.sidebar__logout h4 {
+	padding-left: 1rem;
+}
+.main_contents {
+	margin-left: 345px;
+	padding: 1rem;
+	/* height: 100vh; */
+}
+.res_contents {
+	margin-left: 0px;
+	padding: 1rem;
+	/* height: 100vh; */
+}
+.sidebar_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close_icon{
+    display: none;
+}
+@media screen and (max-width: 1000px) {
+    .close_icon{
+        display: block;
+        height: 50px;
+        padding: 0 1rem;
+    }
+    .close_icon svg{
+        font-size: 1.5rem;
+        color: #fff;
+        cursor: pointer;
+    }
+	.sidebar, .res_contents {
+		display: none;
+        transition: all 0.3s ease;
+	}
+    .main_contents {
+        margin-left: 0px;
+        transition: all 0.3s ease;
+    }
+	.toogle {
+		width: 100%;
+		z-index: 200;
+		left: 0;
+		top: 0;
+        transition: all 0.3s ease;
+	}
+	.toogle .sidebar__logo h1,
+	.toogle .sidebar__menu li p,
+	.toogle .sidebar__logout h4 {
+		transition: all 0.3s ease-out;
+		display: block;
+	}
+
+	/* .sidebar__logo h1, .sidebar__menu li p , .sidebar__logout h4 {
+        display: none;
+    }
+    .sidebar__menu li {
+        padding-left: 1rem;
+    }
+    .sidebar__menu li p{
+        padding-left: 0rem;
+    }
+    .main_contents {
+        margin-left: 70px;
+    }
+    .res_contents {
+        margin-left: 0px;
+    } */
+}
+
+
+/* Path: src\layouts\DashboardNavbar */
+.dashboard_nav{
+	width: calc(100% - 345px);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	height: 80px;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	cursor: pointer;
+}
+.title_toggle{
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.profile_pic{
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0 1rem;
+}
+.profile_pic svg {
+	font-size: 2rem;
+	color: black;
+}
+
+@media only screen and (max-width: 1000px) {
+	.dashboard_nav{
+		width: 100%;
+	}
+}
