@@ -1,0 +1,25 @@
+{
+  "short_name": "Covid Guide",
+  "name": "Covid Guide Web App",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "covidguide.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "covidguide.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
