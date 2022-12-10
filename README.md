@@ -1,7 +1,7 @@
 # COVID GUIDE
 
 ### 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a sample covidapp built during lockdown(2020)
 
 ## Libraries Used
 1. FramerMotion - For Animation
