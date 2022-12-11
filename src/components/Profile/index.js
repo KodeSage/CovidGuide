@@ -4,44 +4,60 @@ import React, { useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import "./Profile.css";
 import { getAuth, updateProfile } from "firebase/auth";
+import {
+	updateDoc,
+	doc,
+	collection,
+	getDocs,
+	query,
+	where,
+	orderBy,
+	deleteDoc,
+} from "firebase/firestore";
+import { db } from "../../firebaseconfig";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, AuthenticateUser } from "../../reduxSlices/authSlices";
 
-const Profiles = () =>
-{
-    const auth = getAuth();
-    const dispatch = useDispatch();
-    const { firstname, username, lastname, email, userCountry } =
-        useSelector( selectUser );
-    
-    	const [userData, setUserData] = useState({
-				firstnames: firstname,
-				lastnames: lastname,
-			});
+const Profiles = () => {
+	const auth = getAuth();
+	const dispatch = useDispatch();
+	const { firstname, username, lastname, email, userCountry, currentuserID } =
+		useSelector(selectUser);
 
-    // const UpdateProfile = async (e) =>
-    // {
-    //     e.preventDefault();
-    //     try
-    //     {
-    //         const user = auth.currentUser;
-    //         const { firstnames, lastnames } = userData;
-    //         await updateProfile(user, {
-	// 						firstname: firstnames,
-	// 						lastname: lastnames,
-    //         } );
-    //         toast.success("User Profile Updated Successfully")
-    //     }
-    //     catch (error)
-    //     {
-    //     toast.error(error.message);
-    //     }
-    
-    // }
-    
+	const [userData, setUserData] = useState({
+		firstnames: firstname,
+		lastnames: lastname,
+	});
+
+	const UpdateProfile = async (e) =>
+	{
+	    e.preventDefault();
+	    try
+	    {
+	        const user = auth.currentUser;
+	        const { firstnames, lastnames } = userData;
+	        await updateProfile(user, {
+							firstname: firstnames,
+							lastname: lastnames,
+			} );
+			
+			const userRef = doc(db, "users", currentuserID);
+					await updateDoc(userRef, {
+						firstname: firstnames,
+						lastname: lastnames,
+					});
+	        toast.success("User Profile Updated Successfully")
+	    }
+	    catch (error)
+	    {
+	    toast.error(error.message);
+	    }
+
+	}
+
 	return (
 		<div>
-			<form>
+			<form onSubmit={UpdateProfile}>
 				<div className="form_container">
 					<div className="form_container__inputs">
 						<h4>UserName</h4>
@@ -62,14 +78,13 @@ const Profiles = () =>
 							<input
 								type="text"
 								placeholder="FirstName"
-								value={firstname}
-								// onChange={(e) =>
-								// 	setUserData({
-								// 		...userData,
-								// 		firstnames: e.target.value,
-								// 	})
-								// }
-								disabled
+								value={userData.firstnames}
+								onChange={(e) =>
+									setUserData({
+										...userData,
+										firstnames: e.target.value,
+									})
+								}
 							/>
 						</div>
 						<h4>LastName</h4>
@@ -77,14 +92,14 @@ const Profiles = () =>
 							<input
 								type="text"
 								placeholder="LastName"
-								value={lastname}
-								// onChange={(e) =>
-								// 	setUserData({
-								// 		...userData,
-								// 		lastnames: e.target.value,
-								// 	})
-								// }
-								disabled
+								value={userData.lastnames}
+								onChange={(e) =>
+									setUserData({
+										...userData,
+										lastnames: e.target.value,
+									})
+								}
+								// disabled
 							/>
 						</div>
 						<h4>Country</h4>
@@ -97,9 +112,9 @@ const Profiles = () =>
 							/>
 						</div>
 
-						{/* <button type="submit" className="button">
+						<button type="submit" className="button">
 							Update Profile
-						</button> */}
+						</button>
 					</div>
 				</div>
 			</form>
