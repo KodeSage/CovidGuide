@@ -75,6 +75,10 @@ export const dashboardSlices = createSlice({
 			state.page += 1;
 			state.covidcases.direct_contact = action.payload;
 		},
+		finalResult: ( state ) =>
+		{
+			state.page += 1;
+		}
 	},
 });
 
@@ -94,6 +98,7 @@ export const {
 	HasTraveled,
 	HasHistory_travel,
 	HasDirect_contact,
+	finalResult,
 } = dashboardSlices.actions;
 
 export default dashboardSlices.reducer;

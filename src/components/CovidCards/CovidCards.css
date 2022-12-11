@@ -55,9 +55,37 @@
 }
 
 .card_body p {
-	font-size: 1.2rem;
-	font-weight: 500;
+	font-size: 1rem;
+	font-weight: 900;
 	margin-bottom: 1rem;
+}
+.card_body h5  {
+	font-weight: 700;
+}
+.card_body h5 span {
+	font-size: 0.9rem;
+	font-weight: 400;
+}
+.LOW {
+	color: #00ff00;
+	font-weight: 900;
+	font-size: 2rem;
+}
+.MEDIUM {
+	color: #ffbf00;
+	font-weight: 900;
+	font-size: 2rem;
+}
+.HIGH{
+	color: #f17474;
+	/* color: #ff0000; */
+	font-weight: 900;
+	font-size: 2rem;
+}
+.SEVERE {
+	color: #ff0000;
+	font-weight: 900;
+	font-size: 2rem;
 }
 .card_button {
 	display: flex;
@@ -118,4 +146,10 @@
     color: #313131;
     text-align: center;
     margin-bottom: 1rem;
+}
+.images{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
 }
