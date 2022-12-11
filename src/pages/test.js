@@ -1,27 +1,150 @@
 /** @format */
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import DashboardLayouts from "../layouts/Dashboardlayouts/DashboardLayouts";
 import DashboardNav from "../layouts/Dashboardlayouts/DashboardNav";
 import IntroCovidCard from "../components/CovidCards/IntroCovidCard";
+import CovidCard from "../components/CovidCards/";
+import { useSelector, useDispatch } from "react-redux";
+import {
+	HasCough,
+	HasCold,
+	HasDiarrhea,
+	HasSorethroat,
+	HasBodyaches,
+	HasHeadache,
+	HasFever,
+	HasDifficulty_breathing,
+	HasFatigue,
+	HasTraveled,
+	HasHistory_travel,
+	HasDirect_contact,
+	selectDashboardNav,
+} from "../reduxSlices/dashboardSlices";
+import coughimage from "../Images/covidimages/c2.png";
+import coldimage from "../Images/covidimages/coldd.png";
+import diarrheaimage from "../Images/covidimages/diarrhea.png";
+import sorethroatimage from "../Images/covidimages/sorethroat.png";
+import bodyachesimage from "../Images/covidimages/bodyaches.png";
+import headacheimage from "../Images/covidimages/headache.png";
+import feverimage from "../Images/covidimages/fever.png";
+import difficultybreathingimage from "../Images/covidimages/difficultybreathing.png";
+import fatigueimage from "../Images/covidimages/fatigue.jpg";
+import traveledimage from "../Images/covidimages/traveled.png";
+import historytravelimage from "../Images/covidimages/historytravel.png";
+import directcontactimage from "../Images/covidimages/directcontact.png";
 
-const Test = () =>
-{
+const Test = () => {
 	const [show, setShow] = useState(true);
+	const dispatch = useDispatch();
+	const { page } = useSelector(selectDashboardNav);
 	return (
 		<>
 			<DashboardLayouts>
 				<DashboardNav title="Self Test" />
 				<div className="contents_height">
 					<div className="covid_contents">
-						<p>ASDFGDS</p>
-						<p>ASDFGDS</p>
-						<p>ASDFGDS</p>
+						{page === 0 && (
+							<CovidCard
+								symptoms="Do you have cough?"
+								image={coughimage}
+								yes={() => dispatch(HasCough("Yes"))}
+								no={() => dispatch(HasCough("No"))}
+							/>
+						)}
+						{page === 1 && (
+							<CovidCard
+								symptoms="Do you have a cold?"
+								image={coldimage}
+								yes={() => dispatch(HasCold("Yes"))}
+								no={() => dispatch(HasCold("No"))}
+							/>
+						)}
+						{page === 2 && (
+							<CovidCard
+								symptoms="Are you having Diarrhea?"
+								image={diarrheaimage}
+								yes={() => dispatch(HasDiarrhea("Yes"))}
+								no={() => dispatch(HasDiarrhea("No"))}
+							/>
+						)}
+						{page === 3 && (
+							<CovidCard
+								symptoms="Are you having sorethroat?"
+								image={sorethroatimage}
+								yes={() => dispatch(HasSorethroat("Yes"))}
+								no={() => dispatch(HasSorethroat("No"))}
+							/>
+						)}
+						{page === 4 && (
+							<CovidCard
+								symptoms="Are you having bodyaches?"
+								image={bodyachesimage}
+								yes={() => dispatch(HasBodyaches("Yes"))}
+								no={() => dispatch(HasBodyaches("No"))}
+							/>
+						)}
+						{page === 5 && (
+							<CovidCard
+								symptoms="Are you having a headache?"
+								image={headacheimage}
+								yes={() => dispatch(HasHeadache("Yes"))}
+								no={() => dispatch(HasHeadache("No"))}
+							/>
+						)}
+						{page === 6 && (
+							<CovidCard
+								symptoms="Do you have fever(Temperature 37.8°Cand above)?"
+								image={feverimage}
+								yes={() => dispatch(HasFever("Yes"))}
+								no={() => dispatch(HasFever("No"))}
+							/>
+						)}
+						{page === 7 && (
+							<CovidCard
+								symptoms="Are you having difficulty breathing?"
+								image={difficultybreathingimage}
+								yes={() => dispatch(HasDifficulty_breathing("Yes"))}
+								no={() => dispatch(HasDifficulty_breathing("No"))}
+							/>
+						)}
+						{page === 8 && (
+							<CovidCard
+								symptoms="Are you experiencing fatigue?"
+								image={fatigueimage}
+								yes={() => dispatch(HasFatigue("Yes"))}
+								no={() => dispatch(HasFatigue("No"))}
+							/>
+						)}
+						{page === 9 && (
+							<CovidCard
+								symptoms="Have you traveled recently during the past 14 days?"
+								image={traveledimage}
+								yes={() => dispatch(HasTraveled("Yes"))}
+								no={() => dispatch(HasTraveled("No"))}
+							/>
+						)}
+						{page === 10 && (
+							<CovidCard
+								symptoms="Do you have a history of traveling to an area infected with COVID-19 ?"
+								image={historytravelimage}
+								yes={() => dispatch(HasHistory_travel("Yes"))}
+								no={() => dispatch(HasHistory_travel("No"))}
+							/>
+						)}
+						{(page === 11  || page > 11)  && (
+							<CovidCard
+								symptoms="Do you have direct contact with or are you taking care of a positive COVID-19 PATIENT?"
+								image={directcontactimage}
+								yes={() => dispatch(HasDirect_contact("Yes"))}
+								no={() => dispatch(HasDirect_contact("No"))}
+							/>
+						)}
 					</div>
 				</div>
 			</DashboardLayouts>
 
-			{show && <IntroCovidCard setShow={setShow} />}
+			{!show && <IntroCovidCard setShow={setShow} />}
 		</>
 	);
 };
