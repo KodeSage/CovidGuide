@@ -25,3 +25,5 @@ export const userSlices = createSlice({
 export const selectUserResults = (state) => state.userslices;
 export const { upDateResults, getDataResults } = userSlices.actions;
 export default userSlices.reducer;
+
+// sm:w-72 lg:w-80 w-full
