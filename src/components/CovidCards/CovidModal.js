@@ -1,14 +1,30 @@
 /** @format */
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { TbVirus } from "react-icons/tb";
 import "./CovidCards.css";
-import {useDispatch} from "react-redux";
-import { finalResult } from "../../reduxSlices/dashboardSlices";
+import { useDispatch, useSelector } from "react-redux";
 import answerpng from "../../Images/covidimages/answer.png";
+import { addResultsToDB } from "../../services/userServices";
+import { selectUser } from "../../reduxSlices/authSlices";
+import { selectUserResults } from "../../reduxSlices/userSlices";
 
 const CovidModal = ({ resultcase, notes, covidcases }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { currentuserID } = useSelector(selectUser);
+	// const { covidresults } = useSelector(selectUserResults);
+
+	const SubmitData = async () => {
+		await addResultsToDB(
+			currentuserID,
+			covidcases,
+			resultcase,
+			dispatch,
+			navigate
+		);
+	};
 	return (
 		<div className="modal_container">
 			<div className="card_modal">
@@ -34,7 +50,9 @@ const CovidModal = ({ resultcase, notes, covidcases }) => {
 					</div>
 				</div>
 				<div className="card_button">
-					<button type="button">Submit</button>
+					<button type="button" onClick={SubmitData}>
+						Submit
+					</button>
 				</div>
 			</div>
 		</div>

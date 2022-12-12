@@ -77,7 +77,7 @@ export const dashboardSlices = createSlice({
 		},
 		finalResult: ( state ) =>
 		{
-			state.page += 1;
+			state.page = 0;
 		}
 	},
 });
