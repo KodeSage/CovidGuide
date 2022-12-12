@@ -14,7 +14,6 @@ ReactDOM.render(
 		<Provider store={ store }>
 			<ToastContainer />
 			<Suspense fallback={ <ThemedSuspense /> }>
-				
 				<Router>
 					<App />
 				</Router>

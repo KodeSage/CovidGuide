@@ -40,8 +40,6 @@ function App() {
 			<Route path="/profile" element={<PrivateRoute />}>
 				<Route path="/profile" element={<Profile />} />
 			</Route>
-
-			{/* <Route path="/dashboard/*" element={<Dashboard />} /> */}
 			<Route path="*" element={<NotFound />} />
 		</Routes>
 	);

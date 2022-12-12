@@ -6,7 +6,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BiHomeAlt, BiLogOut } from "react-icons/bi";
 import { FaNotesMedical } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
-import { CgProfile } from "react-icons/cg";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { TbVirus } from "react-icons/tb";
 import { Link, useLocation, useNavigate } from "react-router-dom";
