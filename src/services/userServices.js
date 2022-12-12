@@ -29,14 +29,14 @@ export const addResultsToDB = async (
 	navigate
 ) => {
 	const time = new Date();
-	const reSultDataForm = {
-		...covidcases,
-		timestamp: time,
-	};
+	// const reSultDataForm = {
+	// 	...covidcases,
+	// };
 	const covidresults = [
 		{
-			resultsdata: reSultDataForm,
+			resultsdata: covidcases,
 			resultcase: resultcase,
+			timestamp: time,
 		},
 	];
 	try {
@@ -50,8 +50,9 @@ export const addResultsToDB = async (
 		toast.success("Results Saved Successfully");
 		dispatch(
 			upDateResults({
-				resultsdata: reSultDataForm,
+				resultsdata: covidcases,
 				resultcase: resultcase,
+				timestamp: time,
 			})
 		);
 		navigate("/dashboard");
@@ -70,8 +71,10 @@ export  const getTransactionsFromDB = async ( userID, dispatch ) =>
 		transactions = [...fetchedDoc.data().covidresults];
 		console.log("Transactions", transactions);
 		dispatch(getDataResults(transactions));
-	} catch (error) {
-		toast.error(error.message);
+	} catch ( error )
+	{
+		console.log(error.message);
+		// toast.error(error.message);
 	}
 	
 }
